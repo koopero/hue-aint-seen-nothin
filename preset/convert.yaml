@@ -1,0 +1,34 @@
+buffer/convert_input:
+  width: 1600
+  height: 1200 
+  format: rgba32
+
+render/convert_input:
+  src: convert_input_bears
+  shader: dissolve
+  blend: alpha
+
+buffer/convert_result:
+  width: 1600
+  height: 1200 
+
+render/convert_result:
+  shader: convert_rgb_hsv 
+  src: convert_input
+
+buffer/convert_show:
+  width: 1600
+  height: 1200 
+
+render/convert_show:
+  shader: show_channel
+  src: convert_result
+
+
+buffer/convert_output:
+  width: 1600
+  height: 1200 
+
+render/convert_output:
+  shader: convert_hsv_rgb
+  src: convert_result

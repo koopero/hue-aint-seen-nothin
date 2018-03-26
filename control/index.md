@@ -3,7 +3,46 @@ path: loopin/show/buffer
 options:
   - analyzer_input
   - analyzer
+  - convert_input
+  - convert_result
+  - convert_show
+  - convert_output
 ```
+
+# Conversion 
+
+``` control 
+path: loopin/render/convert_input/texture/src/buffer
+options:
+  - convert_input_bears
+  - convert_input_leds
+```
+
+``` control 
+path: loopin/render/convert_show/int/channel 
+options:
+  - 0
+  - 1
+  - 2
+  - 3
+```
+
+``` control 
+path: loopin/render/convert_output/float
+subs:
+  hueShift:
+    type: float
+  satShift:
+    type: float
+    min: -0.5
+    max: 0.5
+  satMult:
+    type: float
+    max: 2
+
+```
+
+
 
 
 # Spectrum Analyzer

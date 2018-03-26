@@ -1,4 +1,4 @@
-# written by horten-persist-file at 2018-03-25T19:45:05-07:00
+# written by horten-persist-file at 2018-03-25T21:00:45-07:00
 loopin:
   native:
     pid: 44939
@@ -6,8 +6,8 @@ loopin:
     fullscreen: false
     height: 0
     width: 0
-    x: -1849
-    'y': 281
+    x: -1092
+    'y': 354
   shader:
     spectrum_hls:
       stderr: |
@@ -37,15 +37,27 @@ loopin:
         VersionMajor: 3
         VersionMinor: 2
   input:
-    x: -0.052734375
-    'y': -1.19010417163372
+    x: 1.0390625
+    'y': -0.4739583134651184
   show:
-    buffer: analyzer
+    buffer: convert_show
   render:
     analyzer_input:
       texture:
         src:
           buffer: spectrum_hsv_sin
+    convert_show:
+      int:
+        channel: 1
+    convert_output:
+      float:
+        hueShift: 0
+        satShift: 0.002762430939227012
+        satMult: 0
+    convert_input:
+      texture:
+        src:
+          buffer: convert_input_leds
   uniform:
     vec3:
       shift:
@@ -56,3 +68,18 @@ loopin:
       value: 0.993093922651934
       saturation: 1.040055248618784
       power: 0.8265193370165744
+  image:
+    convert_input_bears:
+      error: null
+      file: >-
+        /Volumes/hdd/koop/Code/Loopin/hue-aint-seen-nothin/image/convert_input_bears.jpg
+      height: 1200
+      loaded: true
+      width: 1600
+    convert_input_leds:
+      error: null
+      file: >-
+        /Volumes/hdd/koop/Code/Loopin/hue-aint-seen-nothin/image/convert_input_leds.jpg
+      height: 1200
+      loaded: true
+      width: 1600
