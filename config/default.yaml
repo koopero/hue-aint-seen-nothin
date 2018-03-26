@@ -1,0 +1,26 @@
+debug:
+  verbose: false
+
+server:
+  listen: 7004
+
+  index: control/index.md
+
+  page:
+    title: Hue Ain't Seen Nothin' Yet
+    nav:
+      - title: Main
+        page: control/index.md
+
+  # This is the file that will store persistence for
+  # your application.
+  persist: data/persist.yaml
+
+  # These directories will be shared under:
+  #   http://localhost/files/*
+  dirs:
+    - control
+    - preset
+    - shader
+    - image
+    - data

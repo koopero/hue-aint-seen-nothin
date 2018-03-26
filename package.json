@@ -1,0 +1,27 @@
+{
+  "name": "hue-aint-seen-nothin",
+  "version": "0.0.0",
+  "description": "Presentation for VCT, March 2018",
+  "main": "./node/index.js",
+  "scripts": {
+    "start": "./node/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koopero/hue-aint-seen-nothin.git"
+  },
+  "author": "Samm Cooper <samm@sublight.ca>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koopero/hue-aint-seen-nothin/issues"
+  },
+  "homepage": "https://github.com/koopero/hue-aint-seen-nothin#readme",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "config": "^1.30.0",
+    "js-yaml": "^3.11.0",
+    "lodash": "^4.17.5",
+    "treebird": "^0.2.3",
+    "zeropad": "^1.1.0"
+  }
+}

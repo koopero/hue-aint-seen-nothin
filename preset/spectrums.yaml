@@ -1,0 +1,17 @@
+# show: spectrum_hls
+
+buffer/spectrum_hls:
+  width: 512
+  height: 1
+
+render/spectrum_hls:
+  shader: spectrum_hls
+
+
+
+buffer/spectrum_hsv_sin:
+  width: 512
+  height: 1
+
+render/spectrum_hsv_sin:
+  shader: spectrum_hsv_sin

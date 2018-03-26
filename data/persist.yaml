@@ -1,0 +1,58 @@
+# written by horten-persist-file at 2018-03-25T19:45:05-07:00
+loopin:
+  native:
+    pid: 44939
+  window:
+    fullscreen: false
+    height: 0
+    width: 0
+    x: -1849
+    'y': 281
+  shader:
+    spectrum_hls:
+      stderr: |
+        [ error ] ofShader: checkProgramLinkStatus(): program failed to link
+        [ error ] ofShader: ofShader: program reports:
+        ERROR: No definition of main in fragment shader
+    analyzer:
+      stderr: "[ error ] ofShader: setupShaderFromSource(): GL_FRAGMENT_SHADER shader failed to compile\n[ error ] ofShader: GL_FRAGMENT_SHADER shader reports:\nERROR: 0:51: Incompatible types in initialization (and no available implicit conversion)\nERROR: 0:55: Use of undeclared identifier 'yVal'\n[ error ] ofShader: GL_FRAGMENT_SHADER, offending line 51 :\n\t   49\t  }\n\t   50\t\n\t   51\t  float yVal = ( srcCoord - splitY ) / ( 1.0 - splitY );\n\t   52\t\n\t   53\t  OUT.rgb = vec3(0.0,0.0,0.0);\n[ error ] ofShader: checkProgramLinkStatus(): program failed to link\n[ error ] ofShader: ofShader: program reports:\nERROR: One or more attached shaders not successfully compiled\n"
+    blank: {}
+    spectrum_hsv_sin:
+      stderr: "[ error ] ofShader: setupShaderFromSource(): GL_FRAGMENT_SHADER shader failed to compile\n[ error ] ofShader: GL_FRAGMENT_SHADER shader reports:\nERROR: 0:56: ')' : syntax error: syntax error\n[ error ] ofShader: GL_FRAGMENT_SHADER, offending line 56 :\n\t   54\t    sinusoidalChannel( hue, shift.g ),\n\t   55\t    sinusoidalChannel( hue, shift.b )\n\t   56\t  ));\n\t   57\t}\n\t   58\t\n[ error ] ofShader: checkProgramLinkStatus(): program failed to link\n[ error ] ofShader: ofShader: program reports:\nERROR: One or more attached shaders not successfully compiled\n"
+  info:
+    waveform:
+      devices:
+        - deviceID: 8
+          inputChannels: 2
+          name: 'Voodoo : Microphone (Pink Rear)'
+        - deviceID: 9
+          inputChannels: 2
+          name: 'Voodoo : Microphone (Pink Front)'
+        - deviceID: 10
+          inputChannels: 2
+          name: 'Voodoo : SPDIF-in (ATAPI)'
+    window:
+      gl:
+        ES: false
+        VersionMajor: 3
+        VersionMinor: 2
+  input:
+    x: -0.052734375
+    'y': -1.19010417163372
+  show:
+    buffer: analyzer
+  render:
+    analyzer_input:
+      texture:
+        src:
+          buffer: spectrum_hsv_sin
+  uniform:
+    vec3:
+      shift:
+        r: -0.5
+        g: 111.62983425414372
+        b: 235.93922651933713
+    float:
+      value: 0.993093922651934
+      saturation: 1.040055248618784
+      power: 0.8265193370165744
