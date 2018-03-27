@@ -1,0 +1,13 @@
+render/wheel:
+  clear: true
+  mesh: wheel
+  src: analyzer_input
+
+mesh/wheel:
+  aspect: 1
+  arc: 
+    radius: 0.7
+    inner: 0
+    cols: 6
+    rows: 12
+    split: true

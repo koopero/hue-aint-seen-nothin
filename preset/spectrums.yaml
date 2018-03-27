@@ -1,7 +1,14 @@
 # show: spectrum_hls
 
+buffer/colour:
+  width: 1
+  height: 1
+
+render/colour:
+  shader: colour
+
 buffer/spectrum_hls:
-  width: 512
+  width: 300
   height: 1
 
 render/spectrum_hls:
@@ -10,8 +17,57 @@ render/spectrum_hls:
 
 
 buffer/spectrum_hsv_sin:
-  width: 512
+  width: 360
   height: 1
+  format: rgba32
 
 render/spectrum_hsv_sin:
   shader: spectrum_hsv_sin
+
+
+
+buffer/spectrum_hsv_standard:
+  width: 300
+  height: 1
+  format: rgba32
+
+
+render/spectrum_hsv_standard:
+  shader: spectrum_hsv_arb
+  texture/palette:
+    buffer: palette_rygcbm
+    filter: linear
+
+
+
+buffer/spectrum_hsv_triangle:
+  width: 300
+  height: 1
+  format: rgba32
+
+render/spectrum_hsv_triangle:
+  shader: spectrum_hsv_arb
+  texture/palette:
+    buffer: palette_rgb
+    filter: linear
+
+
+buffer/spectrum_hsv_fastled:
+  width: 300
+  height: 1
+
+render/spectrum_hsv_fastled:
+  shader: spectrum_hsv_arb
+  texture/palette:
+    buffer: palette_fastled
+    filter: linear
+
+buffer/spectrum_hsv_arb:
+  width: 300
+  height: 1
+
+render/spectrum_hsv_arb:
+  shader: spectrum_hsv_arb
+  texture/palette:
+    buffer: palette_arb
+    filter: linear

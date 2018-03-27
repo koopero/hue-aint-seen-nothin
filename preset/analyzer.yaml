@@ -1,3 +1,6 @@
+buffer/analyzer_input:
+  format: rgba32
+
 render/analyzer_input:
   src: 
     buffer: spectrum_hls
@@ -8,3 +11,5 @@ render/analyzer:
   src: analyzer_input
 
 show: analyzer
+
+window/title: Hue Ain't Seen Nothin' Yet

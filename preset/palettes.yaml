@@ -1,0 +1,30 @@
+pixels/random_colour:
+  format: hex
+  width: 20
+  
+
+pixels/palette_fastled:
+  format: hex
+  # From https://github.com/FastLED/FastLED/blob/master/colorpalettes.cpp
+  data: |
+    FF0000, AB5500,
+    ABAB00, 00FF00,
+    00AB55, 0000FF,
+    5500AB, AB0055,
+
+pixels/palette_rgb:
+  format: hex2
+  data: f00 0f0 00f
+
+pixels/palette_rygcbm:
+  format: hex2
+  data: f00 ff0 0f0 0ff 00f f0f
+
+
+pixels/palette_arb:
+  format: hex
+  width: 8
+
+pixels/black:
+  format: hex2
+  data: '000'

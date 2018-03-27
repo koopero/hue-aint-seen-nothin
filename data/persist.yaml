@@ -1,4 +1,4 @@
-# written by horten-persist-file at 2018-03-25T21:00:45-07:00
+# written by horten-persist-file at 2018-03-27T16:30:46-07:00
 loopin:
   native:
     pid: 44939
@@ -6,19 +6,24 @@ loopin:
     fullscreen: false
     height: 0
     width: 0
-    x: -1092
-    'y': 354
+    x: -1371
+    'y': 258
   shader:
     spectrum_hls:
-      stderr: |
-        [ error ] ofShader: checkProgramLinkStatus(): program failed to link
-        [ error ] ofShader: ofShader: program reports:
-        ERROR: No definition of main in fragment shader
+      stderr: "[ error ] ofShader: setupShaderFromSource(): GL_FRAGMENT_SHADER shader failed to compile\n[ error ] ofShader: GL_FRAGMENT_SHADER shader reports:\nERROR: 0:73: Use of undeclared identifier 's'\nERROR: 0:73: Use of undeclared identifier 's'\nERROR: 0:73: Use of undeclared identifier 's'\nERROR: 0:74: Use of undeclared identifier 'q'\nERROR: 0:76: Use of undeclared identifier 'q'\n[ error ] ofShader: GL_FRAGMENT_SHADER, offending line 73 :\n\t   71\t\n\t   72\t  float l = lightness;\n\t   73\t  float q = l < 0.5 ? l * (1 + s) : l + s - l * s;\n\t   74\t  float p = 2 * l - q;\n\t   75\t\n[ error ] ofShader: checkProgramLinkStatus(): program failed to link\n[ error ] ofShader: ofShader: program reports:\nERROR: One or more attached shaders not successfully compiled\n"
     analyzer:
       stderr: "[ error ] ofShader: setupShaderFromSource(): GL_FRAGMENT_SHADER shader failed to compile\n[ error ] ofShader: GL_FRAGMENT_SHADER shader reports:\nERROR: 0:51: Incompatible types in initialization (and no available implicit conversion)\nERROR: 0:55: Use of undeclared identifier 'yVal'\n[ error ] ofShader: GL_FRAGMENT_SHADER, offending line 51 :\n\t   49\t  }\n\t   50\t\n\t   51\t  float yVal = ( srcCoord - splitY ) / ( 1.0 - splitY );\n\t   52\t\n\t   53\t  OUT.rgb = vec3(0.0,0.0,0.0);\n[ error ] ofShader: checkProgramLinkStatus(): program failed to link\n[ error ] ofShader: ofShader: program reports:\nERROR: One or more attached shaders not successfully compiled\n"
     blank: {}
     spectrum_hsv_sin:
       stderr: "[ error ] ofShader: setupShaderFromSource(): GL_FRAGMENT_SHADER shader failed to compile\n[ error ] ofShader: GL_FRAGMENT_SHADER shader reports:\nERROR: 0:56: ')' : syntax error: syntax error\n[ error ] ofShader: GL_FRAGMENT_SHADER, offending line 56 :\n\t   54\t    sinusoidalChannel( hue, shift.g ),\n\t   55\t    sinusoidalChannel( hue, shift.b )\n\t   56\t  ));\n\t   57\t}\n\t   58\t\n[ error ] ofShader: checkProgramLinkStatus(): program failed to link\n[ error ] ofShader: ofShader: program reports:\nERROR: One or more attached shaders not successfully compiled\n"
+    dissolve: {}
+    convert_hsv_rgb: {}
+    convert_rgb_hsv: {}
+    show_channel: {}
+    spectrum_hsv_arb:
+      stderr: "[ error ] ofShader: setupShaderFromSource(): GL_FRAGMENT_SHADER shader failed to compile\n[ error ] ofShader: GL_FRAGMENT_SHADER shader reports:\nERROR: 0:50: Expression in 'return' statement must match return type of function (and no available implicit conversion)\nERROR: 0:56: Incompatible types in initialization (and no available implicit conversion)\nERROR: 0:58: Use of undeclared identifier 'rgb'\n[ error ] ofShader: GL_FRAGMENT_SHADER, offending line 50 :\n\t   48\t  // Compensate for GL linear putting pixel boundaries at 0.5\n\t   49\t  x -= 0.5 / float( paletteWidth );\n\t   50\t  return Texture( paletteSampler, vec2( x, 0.0 ) ).rgb;\n\t   51\t}\n\t   52\t\n[ error ] ofShader: checkProgramLinkStatus(): program failed to link\n[ error ] ofShader: ofShader: program reports:\nERROR: One or more attached shaders not successfully compiled\n"
+    colour:
+      stderr: "[ error ] ofShader: setupShaderFromSource(): GL_FRAGMENT_SHADER shader failed to compile\n[ error ] ofShader: GL_FRAGMENT_SHADER shader reports:\nERROR: 0:14: Use of undeclared identifier 'OUT'\n[ error ] ofShader: GL_FRAGMENT_SHADER, offending line 14 :\n\t   12\t\n\t   13\tvoid main() {\n\t   14\t  OUT.rgb = colour.rgb;\n\t   15\t}\n\t   16\t\n[ error ] ofShader: checkProgramLinkStatus(): program failed to link\n[ error ] ofShader: ofShader: program reports:\nERROR: One or more attached shaders not successfully compiled\n"
   info:
     waveform:
       devices:
@@ -37,37 +42,50 @@ loopin:
         VersionMajor: 3
         VersionMinor: 2
   input:
-    x: 1.0390625
-    'y': -0.4739583134651184
+    x: 1.2890625
+    'y': 0.03385412693023682
   show:
-    buffer: convert_show
+    buffer: wheel
   render:
     analyzer_input:
       texture:
         src:
-          buffer: spectrum_hsv_sin
+          buffer: spectrum_hls
     convert_show:
       int:
         channel: 1
     convert_output:
       float:
         hueShift: 0
-        satShift: 0.002762430939227012
-        satMult: 0
+        satShift: -0.04765193370165699
+        satMult: 1
     convert_input:
       texture:
         src:
-          buffer: convert_input_leds
+          buffer: slide_wheel_3
+    lamps:
+      texture:
+        src:
+          buffer: random_colour
   uniform:
     vec3:
       shift:
-        r: -0.5
-        g: 111.62983425414372
-        b: 235.93922651933713
+        r: 0
+        g: 120
+        b: 240
+      white:
+        green: 1
+        red: 1
+        blue: 1
+      colour:
+        red: 0
+        green: 0
+        blue: 0
     float:
-      value: 0.993093922651934
-      saturation: 1.040055248618784
-      power: 0.8265193370165744
+      value: 1
+      saturation: 1
+      power: 1.0005524861878459
+      lightness: 0.499309392265193
   image:
     convert_input_bears:
       error: null
@@ -83,3 +101,41 @@ loopin:
       height: 1200
       loaded: true
       width: 1600
+    slide_wheel_1:
+      error: null
+      file: >-
+        /Volumes/hdd/koop/Code/Loopin/hue-aint-seen-nothin/image/slide_wheel_1.jpg
+      height: 492
+      loaded: true
+      width: 640
+    slide_wheel_2:
+      error: null
+      file: >-
+        /Volumes/hdd/koop/Code/Loopin/hue-aint-seen-nothin/image/slide_wheel_2.jpg
+      height: 1200
+      loaded: true
+      width: 1600
+    slide_wheel_3:
+      error: null
+      file: >-
+        /Volumes/hdd/koop/Code/Loopin/hue-aint-seen-nothin/image/slide_wheel_3.jpg
+      height: 792
+      loaded: true
+      width: 1224
+  pixels:
+    random_colour:
+      data: |
+        000000 000000 000000 000000 000000 
+        000000 000000 000000 000000 000000 
+        000000 000000 000000 000000 000000 
+        000000 000000 000000 000000 000000 
+    palette_arb:
+      data: da0000 ba6a00 cdce00 00c800 009fa0 0000cd 7200da ad00de
+  mesh:
+    wheel:
+      arc:
+        cols: 100
+  osd:
+    enabled: false
+logic:
+  random_colour: 1522193416374

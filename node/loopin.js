@@ -26,8 +26,10 @@ loopin.plugin( require('loopin-shaders'), {
 loopin.plugin('imageDir')
 loopin.imageDir( { watch: true, autoload: true } )
 
-// Include useful examples of higher-level logic.
-loopin.plugin( require('./logic/snapshot' ) )
+loopin.plugin( require('./logic/random_colour' ) )
+loopin.plugin( require('./lamps' ) )
+
+
 
 
 // If trace all patches to loopin

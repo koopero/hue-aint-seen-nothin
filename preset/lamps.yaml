@@ -1,0 +1,14 @@
+buffer/lamps:
+  width: 20
+  height: 1
+
+render/lamps:
+  src: analyzer_input
+
+pixels/lamps:
+  buffer: lamps
+  format: base64
+  channels: grb
+  width: 20
+  height: 1
+  output: always

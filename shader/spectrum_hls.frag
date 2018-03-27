@@ -4,7 +4,7 @@
 
 
 uniform float saturation = 1.0;
-uniform float lightness  = 0.0;
+uniform float lightness  = 1.0;
 
 vec3 hueToRGB( float hue ) {
   hue = fract( hue );
@@ -34,5 +34,11 @@ vec3 hueToRGB( float hue ) {
 void main() {
   float hue = srcCoord.x;
   // OUT.r = hue;
-  OUT.rgb = hueToRGB( hue ) * 0.8;
+
+  float l = lightness;
+  float s = saturation;
+  float q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+  float p = 2 * l - q;
+
+  OUT.rgb = hueToRGB( hue ) * ( q - p ) + p;
 }
