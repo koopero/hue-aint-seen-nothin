@@ -1,13 +1,13 @@
-# written by horten-persist-file at 2018-03-27T16:30:46-07:00
+# written by horten-persist-file at 2018-03-30T02:01:24-07:00
 loopin:
   native:
     pid: 44939
   window:
     fullscreen: false
-    height: 0
-    width: 0
-    x: -1371
-    'y': 258
+    height: 1024
+    width: 1024
+    x: 1440
+    'y': 145
   shader:
     spectrum_hls:
       stderr: "[ error ] ofShader: setupShaderFromSource(): GL_FRAGMENT_SHADER shader failed to compile\n[ error ] ofShader: GL_FRAGMENT_SHADER shader reports:\nERROR: 0:73: Use of undeclared identifier 's'\nERROR: 0:73: Use of undeclared identifier 's'\nERROR: 0:73: Use of undeclared identifier 's'\nERROR: 0:74: Use of undeclared identifier 'q'\nERROR: 0:76: Use of undeclared identifier 'q'\n[ error ] ofShader: GL_FRAGMENT_SHADER, offending line 73 :\n\t   71\t\n\t   72\t  float l = lightness;\n\t   73\t  float q = l < 0.5 ? l * (1 + s) : l + s - l * s;\n\t   74\t  float p = 2 * l - q;\n\t   75\t\n[ error ] ofShader: checkProgramLinkStatus(): program failed to link\n[ error ] ofShader: ofShader: program reports:\nERROR: One or more attached shaders not successfully compiled\n"
@@ -42,31 +42,32 @@ loopin:
         VersionMajor: 3
         VersionMinor: 2
   input:
-    x: 1.2890625
-    'y': 0.03385412693023682
+    x: -1.009765625
+    'y': 0.240234375
   show:
-    buffer: wheel
+    buffer: convert_output
   render:
     analyzer_input:
       texture:
         src:
-          buffer: spectrum_hls
+          buffer: spectrum_hsv_arb
     convert_show:
       int:
         channel: 1
     convert_output:
       float:
         hueShift: 0
-        satShift: -0.04765193370165699
+        satShift: 0.007232401157184043
         satMult: 1
+      shader: convert_hsv_rgb_sin
     convert_input:
       texture:
         src:
-          buffer: slide_wheel_3
+          buffer: squarebear
     lamps:
       texture:
         src:
-          buffer: random_colour
+          buffer: colour
   uniform:
     vec3:
       shift:
@@ -82,9 +83,9 @@ loopin:
         green: 0
         blue: 0
     float:
-      value: 1
+      value: 0.995178399228544
       saturation: 1
-      power: 1.0005524861878459
+      power: 1.0181292189006748
       lightness: 0.499309392265193
   image:
     convert_input_bears:
@@ -122,6 +123,12 @@ loopin:
       height: 792
       loaded: true
       width: 1224
+    squarebear:
+      error: null
+      file: /Volumes/hdd/koop/Code/Loopin/hue-aint-seen-nothin/image/squarebear.png
+      height: 744
+      loaded: true
+      width: 744
   pixels:
     random_colour:
       data: |
@@ -130,12 +137,12 @@ loopin:
         000000 000000 000000 000000 000000 
         000000 000000 000000 000000 000000 
     palette_arb:
-      data: da0000 ba6a00 cdce00 00c800 009fa0 0000cd 7200da ad00de
+      data: da0000 ba6a00 cdce00 00c800 0097a0 0000cd 7200da ad00de
   mesh:
     wheel:
       arc:
         cols: 100
   osd:
-    enabled: false
+    enabled: true
 logic:
   random_colour: 1522193416374

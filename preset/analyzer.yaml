@@ -13,3 +13,7 @@ render/analyzer:
 show: analyzer
 
 window/title: Hue Ain't Seen Nothin' Yet
+
+window:
+  width: 1024
+  height: 1024

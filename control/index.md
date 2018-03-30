@@ -293,6 +293,7 @@ options:
   - convert_input_leds
   - slide_wheel_2
   - slide_wheel_3 
+  - squarebear
     
 ```
 
@@ -313,6 +314,13 @@ options:
   - 1
   - 2
   - 3
+```
+
+``` control 
+path: loopin/render/convert_output/shader
+options:
+  - convert_hsv_rgb
+  - convert_hsv_rgb_sin
 ```
 
 ``` control 

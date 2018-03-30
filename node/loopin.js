@@ -27,6 +27,8 @@ loopin.plugin('imageDir')
 loopin.imageDir( { watch: true, autoload: true } )
 
 loopin.plugin( require('./logic/random_colour' ) )
+loopin.plugin( require('./logic/recorder' ) )
+
 loopin.plugin( require('./lamps' ) )
 
 

@@ -19,13 +19,21 @@ uniform float saturation  = 0.5;
 uniform float value       = 1.0;
 uniform vec3  white       = vec3(1.0,1.0,1.0);
 
-uniform sampler2D paletteSampler;
-uniform int paletteWidth;
+uniform vec3 shift = vec3(0,0,0);
+uniform float power = 1.0;
 
-vec3 paletteSample( float x ) {
-  // Compensate for GL linear putting pixel boundaries at 0.5
-  x += 0.5 / float( paletteWidth );
-  return Texture( paletteSampler, vec2( x, 0.0 ) ).rgb;
+const float PI = 3.1415926;
+
+float sinusoidalChannel( float hue, float offset ) {
+  return pow( cos( ( hue - offset ) * PI * 2.0 ) * 0.5 + 0.5, power ); 
+}
+
+vec3 hueToRGB( float hue ) {
+  return vec3( 
+    sinusoidalChannel( hue, shift.r / 360 ),
+    sinusoidalChannel( hue, shift.g / 360 ),
+    sinusoidalChannel( hue, shift.b / 360 )
+  );
 }
 
 void main() {
@@ -44,7 +52,7 @@ void main() {
   float saturation = src.g;
   float value = src.b;
 
-  vec3 rgb = paletteSample( hue );
+  vec3 rgb = hueToRGB(  hue );
 
   OUT.rgb = rgb * saturation * value;
   OUT.rgb += white * value - saturation * value;

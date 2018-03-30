@@ -1,6 +1,6 @@
 buffer/convert_input:
-  width: 1600
-  height: 1200 
+  width: 1024
+  height: 1024 
   format: rgba32
 
 render/convert_input:
@@ -9,16 +9,16 @@ render/convert_input:
   blend: alpha
 
 buffer/convert_result:
-  width: 1600
-  height: 1200 
+  width: 1024
+  height: 1024 
 
 render/convert_result:
   shader: convert_rgb_hsv 
   src: convert_input
 
 buffer/convert_show:
-  width: 1600
-  height: 1200 
+  width: 1024
+  height: 1024 
 
 render/convert_show:
   shader: show_channel
@@ -26,9 +26,10 @@ render/convert_show:
 
 
 buffer/convert_output:
-  width: 1600
-  height: 1200 
+  width: 1024
+  height: 1024 
 
 render/convert_output:
   shader: convert_hsv_rgb
   src: convert_result
+  texture/palette/buffer: palette_arb
